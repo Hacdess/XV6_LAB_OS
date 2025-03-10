@@ -102,7 +102,7 @@ static char *syscall_names[] = {
   [SYS_mkdir]   = "mkdir",
   [SYS_close]   = "close",
   [SYS_hello]   = "hello",
-  [SYS_trace]   = "trace"  // Add the trace syscall name
+  [SYS_trace]   = "trace",   // Add the trace syscall name
   [SYS_trace]   = "sysinfo"  // Add the sysinfo syscall name
 };
 
@@ -157,7 +157,7 @@ static uint64 (*syscalls[])(void) = {
   [SYS_mkdir]   sys_mkdir,
   [SYS_close]   sys_close,
   [SYS_hello]   sys_hello,
-  [SYS_trace]   sys_trace
+  [SYS_trace]   sys_trace,
   [SYS_sysinfo]   sys_sysinfo
 };
 

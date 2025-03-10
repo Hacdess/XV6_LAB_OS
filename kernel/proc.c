@@ -695,3 +695,14 @@ procdump(void)
     printf("\n");
   }
 }
+
+uint32 count_active_proc(void) {
+  uint count = 0;
+  struct proc *p;
+  
+  for (p = proc; p < &proc[NPROC]; ++p) // contigous
+    if (p->state != UNUSED)
+      ++count;
+    
+  return count;
+}

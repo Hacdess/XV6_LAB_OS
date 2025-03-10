@@ -5,6 +5,11 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
+#include "sysinfo.h"
+
+extern uint get_freemem(void);
+extern uint count_active_proc(void);
+extern uint count_open_files(void);
 
 uint64
 sys_exit(void)
@@ -92,16 +97,35 @@ sys_uptime(void)
   return xticks;
 }
 
-int sys_hello(void) { 
+int sys_hello(void)
+{ 
   printf("Hello, world!\n"); 
   return 0; 
 } 
 
 uint64
-sys_trace(void) {
+sys_trace(void)
+{
     int mask;
     argint(0, &mask);
     
     myproc()->trace_mask = mask;  // Lưu mask vào proc structure
     return 0;
+}
+
+uint64
+sys_sysinfo(void)
+{
+  uint64 addr;
+  struct sysinfo info;
+  argaddr(0, &addr);
+
+  info.freemem = get_freemem();
+  info.nproc = count_active_proc();
+  info.nopenfiles = count_open_files();
+
+  if (copyout(myproc()->pagetable, addr, (char*)&info, sizeof(info)) < 0)
+    return -1;
+  
+  return 0;
 }
