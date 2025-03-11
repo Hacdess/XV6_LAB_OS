@@ -103,7 +103,7 @@ static char *syscall_names[] = {
   [SYS_close]   = "close",
   [SYS_hello]   = "hello",
   [SYS_trace]   = "trace",   // Add the trace syscall name
-  [SYS_trace]   = "sysinfo"  // Add the sysinfo syscall name
+  [SYS_sysinfo]   = "sysinfo"  // Add the sysinfo syscall name
 };
 
 // Prototypes for the functions that handle system calls.
@@ -173,7 +173,7 @@ syscall(void)
     // and store its return value in p->trapframe->a0
     p->trapframe->a0 = syscalls[num]();
 
-    if (p->trace_mask & (1 << num)) {  // Kiểm tra mask
+    if (p->trace_mask & (1 << num)) {  // Check mask by and bit
       printf("%d: syscall %s -> %ld\n", p->pid, syscall_names[num], p->trapframe->a0);
 }
   } else {

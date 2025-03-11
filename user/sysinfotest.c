@@ -6,7 +6,8 @@ main(void)
 {
     struct sysinfo info;
 
-    if (sysinfo(&info) < 0) {
+    if (sysinfo(&info) < 0)
+    {
         printf("sysinfo failed\n");
         exit(1);
     }

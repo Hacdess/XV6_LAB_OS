@@ -6,8 +6,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    int mask = atoi(argv[1]);  // Lấy mask từ argv[1]
-    trace(mask);  // Gọi trace system call
+    trace(atoi(argv[1]));  // Gọi trace system call
 
     // Chuẩn bị chạy chương trình được chỉ định
     exec(argv[2], &argv[2]);
