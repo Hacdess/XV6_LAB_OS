@@ -5,7 +5,7 @@
 
 
 int
-main(int argc, char *argv[])A
+main(int argc, char *argv[])
 {
   int i;
   char *nargv[MAXARG];
