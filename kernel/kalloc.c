@@ -90,7 +90,7 @@ get_freemem(void)
   acquire(&kmem.lock);
   for (r = kmem.freelist; r; r = r->next)
     free_memory += PGSIZE;
-  
   release(&kmem.lock);
+  
   return free_memory;
 }

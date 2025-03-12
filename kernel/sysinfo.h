@@ -6,8 +6,8 @@
 struct sysinfo
 {
     uint64 freemem;
-    uint32 nproc;
-    uint32 nopenfiles;
+    uint64 nproc;
+    uint64 nopenfiles;
 };
 
 #endif
