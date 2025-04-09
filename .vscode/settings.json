@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "typeinfo": "c",
+        "sysinfo.h": "c",
+        "proc.h": "c",
+        "spinlock.h": "c",
+        "memlayout.h": "c",
+        "user.h": "c",
+        "syscall.h": "c",
+        "riscv.h": "c"
+    }
+}

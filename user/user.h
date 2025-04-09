@@ -2,7 +2,9 @@
 typedef unsigned long size_t;
 typedef long int off_t;
 #endif
+#include "kernel/types.h"
 struct stat;
+struct sysinfo; 
 
 // system calls
 int fork(void);
@@ -26,6 +28,10 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int hello(void); 
+int trace(int);
+int sysinfo(struct sysinfo *); 
+int pgaccess(char*, int, unsigned int*);
 #ifdef LAB_NET
 int bind(uint32);
 int unbind(uint32);

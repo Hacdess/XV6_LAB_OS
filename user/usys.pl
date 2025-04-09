@@ -41,4 +41,8 @@ entry("unbind");
 entry("send");
 entry("recv");
 entry("pgpte");
+entry("hello");
+entry("trace");
+entry("sysinfo");
+entry("pgaccess");
 entry("kpgtbl");

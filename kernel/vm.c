@@ -489,8 +489,29 @@ copyinstr(pagetable_t pagetable, char *dst, uint64 srcva, uint64 max)
 
 #ifdef LAB_PGTBL
 void
+recursrive_vmprint(pagetable_t pagetable, short depth) {
+  for (short i = 0; i < 512; ++i) {
+    pte_t pte = pagetable[i];
+    if (!(pte & PTE_V))
+      continue;
+    
+    for (short j = 0; j < depth; ++j)
+      printf(" ..");
+
+    printf("%d: pte %p pa %p\n", i, (void*)pte, (void*)PTE2PA(pte));
+
+    if((pte & (PTE_R|PTE_W|PTE_X)) == 0){
+      uint64 child = PTE2PA(pte);
+      recursrive_vmprint((pagetable_t)child, depth + 1);
+    }
+  }
+}
+
+void
 vmprint(pagetable_t pagetable) {
   // your code here
+  printf("page table %p\n", pagetable);
+  recursrive_vmprint(pagetable, 1);
 }
 #endif
 
